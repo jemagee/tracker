@@ -1,0 +1,16 @@
+<h1>Enter a New Vendor</h1>
+
+<%= form_for @vendor do |f| %>
+
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<%= f.label :contact %>
+	<%= f.text_field :contact %>
+
+	<%= f.label :contact_email %>
+	<%= f.text_field :contact_email %>
+
+	<%= f.submit "Add Vendor" %>
+
+<% end %>
