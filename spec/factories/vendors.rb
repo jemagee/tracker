@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :vendor do
-    name "Test Vendor"
+    sequence(:name) {|n| "Vendor Name#{n}"} 
     contact "Test Vendor Contact"
-    contact_email "vendor_contact@example.com"
+    sequence(:contact_email) {|n| "vendor#{n}_contact@example.com"}
   end
 end

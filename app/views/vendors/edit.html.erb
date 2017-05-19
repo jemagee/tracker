@@ -1,0 +1,23 @@
+<h1>Edit Vendor</h1>
+
+<% if @vendor.errors.any? %>
+	<div class="errors" %>
+		<% @vendor.errors.full_messages.each do |msg| %>
+			<%= msg %>
+		<% end %>
+	</div>
+<% end %>
+<%= form_for @vendor do |f| %>
+
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<%= f.label :contact %>
+	<%= f.text_field :contact %>
+
+	<%= f.label :contact_email %>
+	<%= f.text_field :contact_email %>
+
+	<%= f.submit "Update Vendor" %>
+
+<% end %>
