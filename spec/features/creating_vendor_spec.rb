@@ -31,4 +31,26 @@ RSpec.feature "Creating a New Vendor" do
 		end
 	end
 
+	scenario "allows a blank email address" do
+
+		fill_in "vendor[name]", with: "New Vendor"
+
+		click_button "Add Vendor"
+
+		expect(page).to have_content("Vendor Successfully Entered")
+		expect(current_path).to eq vendors_path
+	end
+
+	scenario "requires a unique email address" do 
+
+		fill_in "vendor[name]", with: "New Vendor"
+		fill_in "vendor[contact_email]", with: vendor.contact_email
+
+		click_button "Add Vendor"
+
+		expect(page).to have_content("Vendor Not Added")
+		within("div.errors") do
+			expect(page).to have_content("Contact email has already been taken")
+		end
+	end
 end

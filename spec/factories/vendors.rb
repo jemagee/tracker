@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :vendor do
-    name "MyString"
-    contact "MyString"
-    contact_email "MyString"
+    name "Test Vendor"
+    contact "Test Vendor Contact"
+    contact_email "vendor_contact@example.com"
   end
 end
