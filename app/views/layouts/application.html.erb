@@ -10,10 +10,14 @@
 
   <body>
    <% if !flash.empty? %>
-   	<% flash.each do |key, value| %>
-   		<%= value %>
-   	<% end %>
-   <% end %>
+    <div class="flash">
+     	<% flash.each do |key, value| %>
+     		<%= content_tag(:p, id: key) do %>
+          <%= value %>
+        <% end %>
+     <% end %>
+    </div>
+  <% end %>
     <%= yield %>
   </body>
 </html>

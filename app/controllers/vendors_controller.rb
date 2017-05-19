@@ -9,9 +9,14 @@ class VendorsController < ApplicationController
 	end
 
 	def create
-		@vendor = Vendor.create(vendor_params)
-		flash[:success] = "Vendor Successfully Entered"
-		redirect_to vendors_path
+		@vendor = Vendor.new(vendor_params)
+		if @vendor.save
+			flash[:success] = "Vendor Successfully Entered"
+			redirect_to vendors_path
+		else
+			flash.now[:warning] = "Vendor Not Added"
+			render 'new'
+		end
 	end
 
 	private

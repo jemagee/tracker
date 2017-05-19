@@ -1,5 +1,12 @@
 <h1>Enter a New Vendor</h1>
 
+<% if @vendor.errors.any? %>
+	<div class="errors" %>
+		<% @vendor.errors.full_messages.each do |msg| %>
+			<%= msg %>
+		<% end %>
+	</div>
+<% end %>
 <%= form_for @vendor do |f| %>
 
 	<%= f.label :name %>

@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "Creating a New Vendor" do 
 
-	scenario "works properly" do
+	before {visit new_vendor_path}
 
-		visit new_vendor_path
+	scenario "works properly" do
 
 		fill_in "vendor[name]", with: "New Vendor"
 		fill_in "vendor[contact]", with: "New Contact"
@@ -12,7 +12,21 @@ RSpec.feature "Creating a New Vendor" do
 
 		click_button "Add Vendor"
 
-		expect(page).to have_content("Vendor Successfully Entered")
+		within("div.flash p#success") do
+			expect(page).to have_content("Vendor Successfully Entered")
+		end
 		expect(current_path).to eq vendors_path
 	end
+
+	scenario "requires that the Vendor have a name" do
+
+		click_button "Add Vendor"
+		within("div.flash p#warning") do
+			expect(page).to have_content("Vendor Not Added" )
+		end
+		within("div.errors") do
+			expect(page).to have_content("Name can't be blank")
+		end
+	end
+
 end
