@@ -53,4 +53,17 @@ RSpec.feature "Creating a New Vendor" do
 			expect(page).to have_content("Contact email has already been taken")
 		end
 	end
+
+	scenario "rquires a unique Vendor name" do
+		fill_in "vendor[name]", with: vendor.name
+		click_button "Add Vendor"
+
+		within("div.flash p#warning") do
+			expect(page).to have_content("Vendor Not Added")
+		end
+
+		within("div.errors") do
+			expect(page).to have_content("Name has already been taken")
+		end
+	end
 end
