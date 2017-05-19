@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "Creating a New Vendor" do 
 
+	let!(:vendor) {FactoryGirl.create(:vendor)}
+
 	before {visit new_vendor_path}
 
 	scenario "works properly" do
