@@ -28,9 +28,13 @@ class VendorsController < ApplicationController
 	end
 
 	def update
-		@vendor.update(vendor_params)
-		flash[:success] = "Vendor Successfully Updated"
-		redirect_to @vendor
+		if @vendor.update(vendor_params)
+			flash[:success] = "Vendor Successfully Updated"
+			redirect_to @vendor
+		else
+			flash[:warning] = "Vendor Not Updated"
+			render 'edit'
+		end
 	end
 
 	private
