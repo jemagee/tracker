@@ -1,0 +1,9 @@
+<h1>Vendors</h1>
+
+<div class="row" id="vendors">
+	<% @vendors.each do |vendor| %>
+		<div class="row vendor-info">
+			<%= link_to vendor.name, vendor_path(vendor) %>
+		</div>
+	<% end %>
+</div>

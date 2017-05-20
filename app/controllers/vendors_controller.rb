@@ -1,6 +1,6 @@
 class VendorsController < ApplicationController
 
-	before_action :get_vendor, only: [:show, :edit, :update]
+	before_action :get_vendor, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@vendors = Vendor.all
@@ -36,6 +36,13 @@ class VendorsController < ApplicationController
 			render 'edit'
 		end
 	end
+
+	def destroy
+		@vendor.destroy
+		flash[:success] = "Vendor Successfully Deleted"
+		redirect_to vendors_path
+	end
+
 
 	private
 
