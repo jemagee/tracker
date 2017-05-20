@@ -14,6 +14,6 @@ RSpec.feature "Deleting a Vendor" do
 		expect(page).to have_content("Vendor Successfully Deleted")
 		expect(page).to_not have_content(vendor.name)
 		expect(page).to have_content(vendor2.name)
-		expect(current_path).to eq vendors_paht
+		expect(current_path).to eq vendors_path
 	end
 end
