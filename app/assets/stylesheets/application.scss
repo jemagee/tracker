@@ -16,3 +16,27 @@
  *= require_tree .
  *= require_self
  */
+
+ .errors {
+ 	border: 1px solid red;
+ 	margin-bottom: 25px;
+
+ 	ul {
+ 		list-style: none;
+ 		color: red;
+ 		font-size: 12pt;
+ 	}
+}
+.error-count {
+	background-color: red;
+	color: white;
+	font-weight: bold;
+	padding: 5px;
+	font-size: 14pt;
+	margin-bottom: 5px;
+}
+
+.flash {
+	font-size: 14pt;
+	font-weight: bold;
+}

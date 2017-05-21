@@ -1,13 +1,27 @@
 <% if item.errors.any? %>
-	<% item.errors.full_messages.each do |msg| %>
-		<%= msg %>
-	<% end %>
+	<div class="row">
+		<div class="errors">
+			<div class="error-count">
+				<%= pluralize(item.errors.count, "error") %> prevented this item from being entered
+			</div>
+			<ul>
+				<% item.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
 <% end %>
 
+<div class="row">
 <%= form_for item do |f| %>
+		<div class="form-group">
+			<%= f.label :name %>
+			<%= f.text_field :name, class: "form-control" %>
+		</div>
 
-	<%= f.label :name %>
-	<%= f.text_field :name %>
 
-	<%= f.submit "#{action} Item" %>
+		<%= f.submit "#{action} Item", class: "btn btn-primary" %>
+
 <% end %>
+</div>

@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
 			flash[:success] = "Item Successfully Created!"
 			redirect_to @item
 		else
-			flash[:warning] = "Item Not Created!"
+			flash.now[:danger] = "Item Not Created!"
 			render 'new'
 		end
 	end
@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
 			flash[:success] = "Item Updated Successfully!"
 			redirect_to @item
 		else
-			flash[:warming] = "Item Not Updated!"
+			flash.now[:danger] = "Item Not Updated!"
 			render 'edit'
 		end
 	end

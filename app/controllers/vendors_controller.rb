@@ -16,7 +16,7 @@ class VendorsController < ApplicationController
 			flash[:success] = "Vendor Successfully Entered"
 			redirect_to vendors_path
 		else
-			flash.now[:warning] = "Vendor Not Added"
+			flash.now[:danger] = "Vendor Not Added"
 			render 'new'
 		end
 	end
@@ -32,7 +32,7 @@ class VendorsController < ApplicationController
 			flash[:success] = "Vendor Successfully Updated"
 			redirect_to @vendor
 		else
-			flash[:warning] = "Vendor Not Updated"
+			flash.now[:danger] = "Vendor Not Updated"
 			render 'edit'
 		end
 	end

@@ -23,7 +23,7 @@ RSpec.feature "Creating a New Vendor" do
 	scenario "requires that the Vendor have a name" do
 
 		click_button "Add Vendor"
-		within("div.flash p#warning") do
+		within("div.flash p#danger") do
 			expect(page).to have_content("Vendor Not Added" )
 		end
 		within("div.errors") do
@@ -58,7 +58,7 @@ RSpec.feature "Creating a New Vendor" do
 		fill_in "vendor[name]", with: vendor.name
 		click_button "Add Vendor"
 
-		within("div.flash p#warning") do
+		within("div.flash p#danger") do
 			expect(page).to have_content("Vendor Not Added")
 		end
 

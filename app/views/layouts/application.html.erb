@@ -9,16 +9,16 @@
   </head>
 
   <body>
-   <% if !flash.empty? %>
-    <div class="flash">
-     	<% flash.each do |key, value| %>
-     		<%= content_tag(:p, id: key) do %>
-          <%= value %>
-        <% end %>
-     <% end %>
-    </div>
-  <% end %>
-  <div class="container">
+    <div class="container">
+     <% if !flash.empty? %>
+      <div class="flash row">
+       	<% flash.each do |key, value| %>
+       		<%= content_tag(:p, id: key, class: "alert alert-#{key}") do %>
+            <%= value %>
+          <% end %>
+       <% end %>
+      </div>
+    <% end %>
     <%= yield %>
   </div>
   </body>

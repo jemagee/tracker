@@ -1,21 +1,36 @@
 <% if vendor.errors.any? %>
-	<div class="errors" %>
-		<%vendor.errors.full_messages.each do |msg| %>
-			<%= msg %>
-		<% end %>
+	<div class="row">
+		<div class="errors" %>
+			<div class="error-count">
+				<%= pluralize(vendor.errors.count, "error") %> prevented this vendor from being entered
+			</div>
+			<ul>
+				<%vendor.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
 	</div>
 <% end %>
+<div class="row">
 <%= form_for vendor do |f| %>
 
-	<%= f.label :name %>
-	<%= f.text_field :name %>
+	<div class="form-group">
+		<%= f.label :name %>
+		<%= f.text_field :name, class: "form-control" %>
+	</div>
 
-	<%= f.label :contact %>
-	<%= f.text_field :contact %>
+	<div class="form-group">
+		<%= f.label :contact %>
+		<%= f.text_field :contact, class: "form-control" %>
+	</div>
 
-	<%= f.label :contact_email %>
-	<%= f.text_field :contact_email %>
+	<div class="form-group">
+		<%= f.label :contact_email %>
+		<%= f.text_field :contact_email, class: "form-control" %>
+	</div>
 
-	<%= f.submit "#{action} Vendor" %>
+	<%= f.submit "#{action} Vendor", class: "btn btn-primary" %>
 
 <% end %>
+</div>

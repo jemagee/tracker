@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   resources :vendors
   resources :items
+
+  root to: "static_pages#index"
   
 end
