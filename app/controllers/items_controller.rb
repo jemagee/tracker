@@ -10,9 +10,14 @@ class ItemsController < ApplicationController
 	
 
 	def create
-		@item = Item.create(item_params)
-		flash[:success] = "Item Successfully Created!"
-		redirect_to @item
+		@item = Item.new(item_params)
+		if @item.save
+			flash[:success] = "Item Successfully Created!"
+			redirect_to @item
+		else
+			flash[:warning] = "Item Not Created!"
+			render 'new'
+		end
 	end
 
 	def show
