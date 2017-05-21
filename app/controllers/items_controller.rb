@@ -29,9 +29,13 @@ class ItemsController < ApplicationController
 	end
 
 	def update
-		@item.update(item_params)
-		flash[:success] = "Item Updated Successfully!"
-		redirect_to @item
+		if @item.update(item_params)
+			flash[:success] = "Item Updated Successfully!"
+			redirect_to @item
+		else
+			flash[:warming] = "Item Not Updated!"
+			render 'edit'
+		end
 	end
 
 
