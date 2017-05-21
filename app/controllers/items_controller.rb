@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 
+	before_action :get_item, only: [:show, :edit, :update]
+
 	def index
 		@items = Item.all
 	end
@@ -21,12 +23,25 @@ class ItemsController < ApplicationController
 	end
 
 	def show
-		@item = Item.find(params[:id])
 	end
+
+	def edit
+	end
+
+	def update
+		@item.update(item_params)
+		flash[:success] = "Item Updated Successfully!"
+		redirect_to @item
+	end
+
 
 	private
 
 		def item_params
 			params.require(:item).permit(:name)
+		end
+
+		def get_item
+			@item = Item.find(params[:id])
 		end
 end
