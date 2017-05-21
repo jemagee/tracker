@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-	before_action :get_item, only: [:show, :edit, :update]
+	before_action :get_item, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@items = Item.all
@@ -36,6 +36,12 @@ class ItemsController < ApplicationController
 			flash[:warming] = "Item Not Updated!"
 			render 'edit'
 		end
+	end
+
+	def destroy
+		@item.destroy
+		flash[:success] = "Item Deleted Successfully!"
+		redirect_to items_path
 	end
 
 
