@@ -1,0 +1,15 @@
+<div class="row">
+	<%= form_for type do |f| %>
+		
+		<div class="form-group">
+			<%= f.label :name %>
+			<%= f.text_field :name, class: "form-control" %>
+		</div>
+
+		<%= f.submit "#{action} Type", class: "btn btn-primary" %>
+	<% end %>
+</div>
+
+
+
+
