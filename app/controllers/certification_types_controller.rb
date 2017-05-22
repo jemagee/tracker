@@ -1,17 +1,21 @@
 class CertificationTypesController < ApplicationController
 
 	def index
-		@types = CertificationType.all
+		@certtypes = CertificationType.all
 	end
 
 	def new
-		@type = CertificationType.new
+		@certtype = CertificationType.new
 	end
 
 	def create
-		@type = CertificationType.create(type_params)
+		@certtype = CertificationType.create(type_params)
 		flash[:success] = "New Certification Type Added!"
 		redirect_to certification_types_path
+	end
+
+	def show
+		@certtype = CertificationType.find(params[:id])
 	end
 
 	private

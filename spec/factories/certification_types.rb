@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :type do
+  factory :certification_type do
     name "MyString"
   end
 end
