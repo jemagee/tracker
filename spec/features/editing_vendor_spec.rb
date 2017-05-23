@@ -23,7 +23,7 @@ RSpec.feature "Editing a Vendor" do
 		end
 	end
 
-	scenario "fails appropriately with bad company name" do
+	scenario "fails appropriately with non-unique company name" do
 
 		fill_in "vendor[name]", with: vendor2.name
 		click_button "Update Vendor"
@@ -33,10 +33,19 @@ RSpec.feature "Editing a Vendor" do
 		expect(current_url).to_not eq vendor_path(vendor)
 	end
 
-	scenario "fails appropriate with non-non unique email" do
+	scenario "fails appropriately with non-unique email" do
 
 		fill_in "vendor[contact_email]", with: vendor2.contact_email
 		click_button "Update Vendor"
+		
 		expect(page).to have_content("Contact email has already been taken")
+	end
+
+	scenario "fails appropriately with a short company name" do
+
+		fill_in "vendor[name]", with: "a" * 3
+		click_button "Update Vendor"
+
+		expect(page).to have_content("Name is too short")
 	end
 end

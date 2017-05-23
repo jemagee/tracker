@@ -66,4 +66,12 @@ RSpec.feature "Creating a New Vendor" do
 			expect(page).to have_content("Name has already been taken")
 		end
 	end
+
+	scenario "requires a name of at least 4 characters" do
+
+		fill_in "vendor[name]", with: "a" * 3
+		click_button "Add Vendor"
+
+		expect(page).to have_content("Name is too short")
+	end
 end
