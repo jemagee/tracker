@@ -37,6 +37,12 @@ class CertificationTypesController < ApplicationController
 		end
 	end
 
+	def destroy 
+		@certtype.destroy
+		flash[:success] = "Certification Type Successfully Deleted!"
+		redirect_to certification_types_path
+	end
+
 	private
 
 		def type_params

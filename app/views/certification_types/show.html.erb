@@ -3,4 +3,5 @@
 </div>
 <div class="row">
 	<%= link_to "Edit #{@certtype.name}", edit_certification_type_path(@certtype) %>
+	<%= link_to "Delete #{@certtype.name}", @certtype, method: :delete, data: {confirm: "Are you sure you want to delete this certiication type?"} %>
 </div>
