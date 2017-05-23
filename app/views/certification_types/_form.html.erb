@@ -1,16 +1,5 @@
 <% if certtype.errors.any? %>
-	<div class="row">
-		<div class="errors">
-			<div class="error-count">
-				<%= pluralize(certtype.errors.count, "error") %> prevented this item from being entered
-			</div>
-			<ul>
-				<% certtype.errors.full_messages.each do |msg| %>
-						<li><%= msg %></li>
-				<% end %>
-			</ul>
-		</div>
-	</div>
+	<%= render 'shared/errors', object: certtype %>
 <% end %>
 
 <div class="row">
@@ -21,7 +10,7 @@
 			<%= f.text_field :name, class: "form-control" %>
 		</div>
 
-		<%= f.submit "#{action} Type", class: "btn btn-primary" %>
+		<%= f.submit "#{action} Certification Type", class: "btn btn-primary" %>
 	<% end %>
 </div>
 

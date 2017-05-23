@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="errors">
+		<div class="error-count">
+			<%= pluralize(object.errors.count, "error") %> prevented this <%= object.model_name.human %> from being entered
+		</div>
+		<ul>
+			<% object.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+

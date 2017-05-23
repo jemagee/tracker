@@ -2,6 +2,6 @@
 
 <%= @certtypes.each do |type| %>
 	<div class="row">
-		<%= type %>
+		<%= link_to type.name, certification_type_path(type) %>
 	</div>
 <% end %>

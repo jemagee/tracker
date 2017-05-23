@@ -1,16 +1,5 @@
 <% if vendor.errors.any? %>
-	<div class="row">
-		<div class="errors" %>
-			<div class="error-count">
-				<%= pluralize(vendor.errors.count, "error") %> prevented this vendor from being entered
-			</div>
-			<ul>
-				<%vendor.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
-				<% end %>
-			</ul>
-		</div>
-	</div>
+	<%= render 'shared/errors', object: vendor %>
 <% end %>
 <div class="row">
 <%= form_for vendor do |f| %>

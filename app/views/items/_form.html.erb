@@ -1,16 +1,5 @@
 <% if item.errors.any? %>
-	<div class="row">
-		<div class="errors">
-			<div class="error-count">
-				<%= pluralize(item.errors.count, "error") %> prevented this item from being entered
-			</div>
-			<ul>
-				<% item.errors.full_messages.each do |msg| %>
-						<li><%= msg %></li>
-				<% end %>
-			</ul>
-		</div>
-	</div>
+	<%= render 'shared/errors', object: item %>
 <% end %>
 
 <div class="row">

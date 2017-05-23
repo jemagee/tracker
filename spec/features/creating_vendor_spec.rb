@@ -72,6 +72,7 @@ RSpec.feature "Creating a New Vendor" do
 		fill_in "vendor[name]", with: "a" * 3
 		click_button "Add Vendor"
 
+		expect(page).to have_content("1 error prevented this Vendor from being entered")
 		expect(page).to have_content("Name is too short")
 	end
 end

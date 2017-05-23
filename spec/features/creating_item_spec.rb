@@ -33,7 +33,7 @@ RSpec.feature "Creating an item" do
 		expect(page).to have_content("Item Not Created!")
 		within("div.errors") do
 			within ("div.error-count") do
-				expect(page).to have_content("1 error prevented this item from being entered")
+				expect(page).to have_content("1 error prevented this Item from being entered")
 			end
 			expect(page).to have_content("Name has already been taken")
 		end
