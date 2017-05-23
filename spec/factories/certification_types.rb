@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :certification_type do
-    name "MyString"
+    sequence(:name) {|n| "Cert Type #{n}"} 
   end
 end
