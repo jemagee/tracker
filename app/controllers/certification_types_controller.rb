@@ -9,9 +9,14 @@ class CertificationTypesController < ApplicationController
 	end
 
 	def create
-		@certtype = CertificationType.create(type_params)
-		flash[:success] = "New Certification Type Added!"
-		redirect_to certification_types_path
+		@certtype = CertificationType.new(type_params)
+		if @certtype.save
+			flash[:success] = "New Certification Type Added!"
+			redirect_to certification_types_path
+		else
+			flash.now[:danger] = "New Certification Type Not Added!"
+			render 'new'
+		end
 	end
 
 	def show

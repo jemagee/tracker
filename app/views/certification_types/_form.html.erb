@@ -1,3 +1,18 @@
+<% if certtype.errors.any? %>
+	<div class="row">
+		<div class="errors">
+			<div class="error-count">
+				<%= pluralize(certtype.errors.count, "error") %> prevented this item from being entered
+			</div>
+			<ul>
+				<% certtype.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+<% end %>
+
 <div class="row">
 	<%= form_for certtype do |f| %>
 		
