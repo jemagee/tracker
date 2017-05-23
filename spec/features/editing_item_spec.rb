@@ -36,4 +36,12 @@ RSpec.feature "Editing an Item" do
 		expect(page).to have_content("Item Not Updated!")
 		expect(page).to have_content("Name has already been taken")
 	end
+
+	scenario "Errors with too short name" do
+
+		fill_in "item[name]", with: "a" * 3
+		click_button "Update Item"
+
+		expect(page).to have_content("Name is too short")
+	end
 end

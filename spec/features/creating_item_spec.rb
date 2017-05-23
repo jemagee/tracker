@@ -29,6 +29,7 @@ RSpec.feature "Creating an item" do
 
 		fill_in "item[name]", with: "TESt ItEm"
 		click_button "Add Item"
+
 		expect(page).to have_content("Item Not Created!")
 		within("div.errors") do
 			within ("div.error-count") do
@@ -36,5 +37,14 @@ RSpec.feature "Creating an item" do
 			end
 			expect(page).to have_content("Name has already been taken")
 		end
+	end
+
+	scenario "With a name less than four letters" do
+
+		fill_in "item[name]", with: "a" * 3
+		click_button "Add Item"
+
+		expect(page).to have_content("Item Not Created!")
+		expect(page).to have_content("Name is too short")
 	end
 end
