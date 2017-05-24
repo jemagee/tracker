@@ -11,10 +11,8 @@
 
 
 			<%= f.collection_check_boxes :certification_type_ids, CertificationType.all, :id, :name do |b| %>
-				<div class="form-group">
 					<%= b.check_box %>
-					<%= b.label %>
-				</div>
+					<%= b.label  %>
 			<% end %>
 
 		<%= f.submit "#{action} Item", class: "btn btn-primary" %>

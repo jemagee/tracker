@@ -1,6 +1,19 @@
-<h1><%= @item.name %></h1>
+<header>
+	<h1><%= @item.name %></h1>
+</header>
 
-<%= link_to "Edit #{@item.name}", edit_item_path(@item) %>
-<%= link_to "Delete #{@item.name}", item_path(@item), method: :delete, data: {confirm: "Are you sure you want to delete #{@item.name}"} %>
+<div id="actions">
+	<%= link_to "Edit #{@item.name}", edit_item_path(@item) %>
+	<%= link_to "Delete #{@item.name}", item_path(@item), method: :delete, data: {confirm: "Are you sure you want to delete #{@item.name}"} %>
+</div>
 
-
+<% if @item.certification_types.any? %>
+	<div id="certtypes">
+		<h3><%= pluralize(@item.certification_types.count, "Certification") %></h3>
+		<ul id="types">
+			<% @item.certification_types.each do |type| %>
+				<li><%= type.name %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
