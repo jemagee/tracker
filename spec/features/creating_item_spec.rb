@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "Creating an item" do
 
 	3.times do |n| 
-		let!("cert#{n}") {FactoryGirl.create(:certification_type)}
+		let!("cert#{n}") {FactoryGirl.create(:certification)}
 	end
 
 	before {visit new_item_path}
@@ -52,10 +52,9 @@ RSpec.feature "Creating an item" do
 		expect(page).to have_content("Name is too short")
 	end
 
-	scenario "Assigning Cerrtification Types" do
+	scenario "Assigning Cerrtification" do
 
 		fill_in "item[name]", with: "New Item Name"
-		puts find(:css, "input#item_name")
 		check  "#{cert2.name}"
 		click_button "Add Item"
 

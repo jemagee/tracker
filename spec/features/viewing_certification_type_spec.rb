@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.feature "Viewing a A Certficiation Type" do
 
-	let!(:certtype) {FactoryGirl.create(:certification_type)}
+	let!(:certification) {FactoryGirl.create(:certification)}
 
 	scenario "Displays properly" do
 
-		visit certification_type_path(certtype)
+		visit certification_path(certification)
 
 		within("div.header") do
-			expect(page).to have_content certtype.name
+			expect(page).to have_content certification.name
 		end
 	end
 end

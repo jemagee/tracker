@@ -10,7 +10,7 @@
 		</div>
 
 
-			<%= f.collection_check_boxes :certification_type_ids, CertificationType.all, :id, :name do |b| %>
+			<%= f.collection_check_boxes :certification_ids, Certification.all, :id, :name do |b| %>
 					<%= b.check_box %>
 					<%= b.label  %>
 			<% end %>

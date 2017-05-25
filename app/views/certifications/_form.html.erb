@@ -1,0 +1,19 @@
+<% if certification.errors.any? %>
+	<%= render 'shared/errors', object: certification %>
+<% end %>
+
+<div class="row">
+	<%= form_for certification do |f| %>
+		
+		<div class="form-group">
+			<%= f.label :name %>
+			<%= f.text_field :name, class: "form-control" %>
+		</div>
+
+		<%= f.submit "#{action} Certification", class: "btn btn-primary" %>
+	<% end %>
+</div>
+
+
+
+

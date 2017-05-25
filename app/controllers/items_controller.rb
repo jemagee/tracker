@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
 	private
 
 		def item_params
-			params.require(:item).permit(:name, certification_type_ids: [])
+			params.require(:item).permit(:name, certification_ids: [])
 		end
 
 		def get_item

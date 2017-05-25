@@ -7,11 +7,11 @@
 	<%= link_to "Delete #{@item.name}", item_path(@item), method: :delete, data: {confirm: "Are you sure you want to delete #{@item.name}"} %>
 </div>
 
-<% if @item.certification_types.any? %>
+<% if @item.certifications.any? %>
 	<div id="certtypes">
-		<h3><%= pluralize(@item.certification_types.count, "Certification") %></h3>
+		<h3><%= pluralize(@item.certifications.count, "Certification") %></h3>
 		<ul id="types">
-			<% @item.certification_types.each do |type| %>
+			<% @item.certifications.each do |type| %>
 				<li><%= type.name %></li>
 			<% end %>
 		</ul>

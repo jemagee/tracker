@@ -1,0 +1,7 @@
+<h1 class="row">Certifications</h1>
+
+<% @certifications.each do |certification| %>
+	<div class="row">
+		<%= link_to certification.name, certification_path(certification) %>
+	</div>
+<% end %>
