@@ -1,0 +1,9 @@
+<%= form_for @certifier do |f| %>
+
+	<%= f.label :organization %>
+	<%= f.text_field :organization %>
+
+	<%= collection_select(:certifier, :certification_id, Certification.all, :id, :name) %>
+
+	<%= f.submit %>
+<% end %>

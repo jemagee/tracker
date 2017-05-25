@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :vendors
   resources :items
   resources :certifications
+  resources :certifiers
   
   root to: "static_pages#index"
   
