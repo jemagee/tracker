@@ -6,7 +6,7 @@
 	<%= f.label :organization %>
 	<%= f.text_field :organization %>
 
-	<%= collection_select(:certifier, :certification_id, Certification.all, :id, :name, include_blank: true) %>
+	<%= collection_select(:certifier, :certification_id, Certification.all, :id, :name, include_blank: "Select Certification Type") %>
 
 	<%= f.submit "#{action} Certifier" %>
 <% end %>

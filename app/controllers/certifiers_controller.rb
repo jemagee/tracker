@@ -24,9 +24,13 @@ class CertifiersController < ApplicationController
 	end
 
 	def update
-		@certifier.update(certifier_params)
-		flash[:success] = "Certifier Updated Successfully!"
-		redirect_to @certifier
+		if @certifier.update(certifier_params)
+			flash[:success] = "Certifier Updated Successfully!"
+			redirect_to @certifier
+		else
+			flash.now[:danger] = "Certifier Not Updated!"
+			render 'edit'
+		end
 	end
 
 	private
