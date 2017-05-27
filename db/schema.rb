@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525205314) do
+ActiveRecord::Schema.define(version: 20170527194452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20170525205314) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "vendor_certifiers", force: :cascade do |t|
+    t.integer  "vendor_id"
+    t.integer  "certifier_id"
+    t.date     "expires_on"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["certifier_id"], name: "index_vendor_certifiers_on_certifier_id", using: :btree
+    t.index ["vendor_id"], name: "index_vendor_certifiers_on_vendor_id", using: :btree
+  end
+
   create_table "vendors", force: :cascade do |t|
     t.string   "name"
     t.string   "contact"
@@ -51,4 +61,6 @@ ActiveRecord::Schema.define(version: 20170525205314) do
   end
 
   add_foreign_key "certifiers", "certifications"
+  add_foreign_key "vendor_certifiers", "certifiers"
+  add_foreign_key "vendor_certifiers", "vendors"
 end
