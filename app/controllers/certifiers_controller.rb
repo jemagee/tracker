@@ -1,5 +1,7 @@
 class CertifiersController < ApplicationController
 
+	before_action :get_certifier, only: [:show, :edit, :update, :destroy]
+
 	def new
 		@certifier = Certifier.new
 	end
@@ -16,12 +18,24 @@ class CertifiersController < ApplicationController
 	end
 
 	def show
-		@certifier = Certifier.find(params[:id])
+	end
+
+	def edit
+	end
+
+	def update
+		@certifier.update(certifier_params)
+		flash[:success] = "Certifier Updated Successfully!"
+		redirect_to @certifier
 	end
 
 	private
 
 		def certifier_params
 			params.require(:certifier).permit(:organization, :certification_id)
+		end
+
+		def get_certifier
+			@certifier = Certifier.find(params[:id])
 		end
 end

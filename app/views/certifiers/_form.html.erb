@@ -1,0 +1,12 @@
+<% if certifier.errors.any? %>
+	<%= render 'shared/errors', object: certifier %>
+<% end %>
+<%= form_for certifier do |f| %>
+
+	<%= f.label :organization %>
+	<%= f.text_field :organization %>
+
+	<%= collection_select(:certifier, :certification_id, Certification.all, :id, :name, include_blank: true) %>
+
+	<%= f.submit "#{action} Certifier" %>
+<% end %>
