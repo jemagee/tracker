@@ -1,0 +1,10 @@
+<header class="row">
+	<h1>Certifiers Index</h1>
+</header> 
+
+<% @certifiers.each do |certifier| %>
+	<div class="row">
+		<%= link_to "#{certifier.organization}", certifier_path(certifier) %>
+		<%= certifier.certification.name %> Certification
+	</div>
+<% end %>

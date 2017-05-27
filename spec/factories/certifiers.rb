@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :certifier do
-    sequence(:organization) {|n| "Organication#{n}"} 
+    sequence(:organization) {|n| "Organization#{n}"} 
     certification nil
   end
 end

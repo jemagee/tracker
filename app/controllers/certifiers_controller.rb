@@ -2,6 +2,10 @@ class CertifiersController < ApplicationController
 
 	before_action :get_certifier, only: [:show, :edit, :update, :destroy]
 
+	def index
+		@certifiers = Certifier.all
+	end
+	
 	def new
 		@certifier = Certifier.new
 	end
@@ -31,6 +35,12 @@ class CertifiersController < ApplicationController
 			flash.now[:danger] = "Certifier Not Updated!"
 			render 'edit'
 		end
+	end
+
+	def destroy 
+		@certifier.destroy
+		flash[:success] = "Certifier Deleted Successfull!"
+		redirect_to certifiers_path
 	end
 
 	private

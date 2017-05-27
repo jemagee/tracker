@@ -9,7 +9,10 @@ RSpec.feature "Editing a Certifier" do
 	let!(:certifier) {FactoryGirl.create(:certifier, certification: certification0)}
 	let!(:certifier2) {FactoryGirl.create(:certifier, certification: certification4)}
 
-	before {visit edit_certifier_path(certifier)}
+	before do
+		visit certifier_path(certifier)
+		click_link "Edit #{certifier.organization}"
+	end
 
 	scenario "Works properly" do
 
