@@ -6,6 +6,8 @@ RSpec.feature "Creating a certifier" do
 		let!("certification#{n}") {FactoryGirl.create(:certification)}
 	end
 
+	let!(:certifier) {FactoryGirl.create(:certifier, certification: certification3)}
+
 	before {visit new_certifier_path}
 
 	scenario "works properly" do
@@ -46,12 +48,22 @@ RSpec.feature "Creating a certifier" do
 		expect(page).to have_content("minimum is 3 characters")
 	end
 
-	scenario "Presents error when you dont' select a certification type" do
+	scenario "Presents error when you don't select a certification type" do
 
 		fill_in "certifier[organization]", with: "QAI"
 		click_button "Add Certifier"
 
 		expect(page).to have_content("Certifier Not Created!")
 		expect(page).to have_content("Certification can't be blank")
+	end
+
+	scenario "Presents error when a duplication organization name is entered" do
+
+		fill_in "certifier[organization]", with: certifier.organization
+		select "#{certification3.name}", from: "certifier[certification_id]"
+		click_button "Add Certifier"
+
+		expect(page).to have_content("Certifier Not Created!")
+		expect(page).to have_content("has already been taken")
 	end
 end
