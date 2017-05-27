@@ -6,9 +6,13 @@ class CertifiersController < ApplicationController
 
 	def create
 		@certifier = Certifier.new(certifier_params)
-		@certifier.save
-		flash[:success] = "Certifier Successfully Created!"
-		redirect_to certifier_path(@certifier)
+		if @certifier.save
+			flash[:success] = "Certifier Successfully Created!"
+			redirect_to certifier_path(@certifier)
+		else
+			flash.now[:danger] = "Certifier Not Created!"
+			render 'new'
+		end
 	end
 
 	def show
