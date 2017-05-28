@@ -1,6 +1,17 @@
-<div class="vendor-name">
+<div class="vendor-name row">
 	<%= @vendor.name %>
 </div>
+
+<%= @vendor.vendor_certifiers.inspect %>
+
+<div class="row" id="certifications">
+	<% @vendor.vendor_certifiers.each do |vendorcert| %>
+		<%= vendorcert.certifier.certification.name %>
+		<%= vendorcert.certifier.organization %>
+		<%= vendorcert.expires_on %>
+	<% end %>
+</div>
+
 
 <%= link_to "Edit Vendor", edit_vendor_path(@vendor) %>
 <%= link_to "Delete Vendor", vendor_path(@vendor), method: :delete, data: {content: "Are you sure you want to delete the vendor?"} %>

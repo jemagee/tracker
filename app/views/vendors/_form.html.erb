@@ -19,6 +19,15 @@
 		<%= f.text_field :contact_email, class: "form-control" %>
 	</div>
 
+	<%= f.fields_for :vendor_certifiers do |ff| %>
+
+		<%= ff.collection_select(:certifier_id, Certifier.all, :id, :organization, include_blank: "Select Certifier") %>
+
+		<%= ff.label :expires_on %>
+		<%= ff.date_field :expires_on %>
+
+	<% end %>
+
 	<%= f.submit "#{action} Vendor", class: "btn btn-primary" %>
 
 <% end %>

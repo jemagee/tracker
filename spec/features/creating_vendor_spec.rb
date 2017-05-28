@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature "Creating a New Vendor" do 
 
 	let!(:vendor) {FactoryGirl.create(:vendor)}
+	let!(:vendor2) {FactoryGirl.create(:vendor, contact_email: "")}
 
 	before {visit new_vendor_path}
 
@@ -15,7 +16,7 @@ RSpec.feature "Creating a New Vendor" do
 		click_button "Add Vendor"
 
 		within("div.flash p#success") do
-			expect(page).to have_content("Vendor Successfully Entered")
+			expect(page).to have_content("Vendor Successfully Entered!")
 		end
 		expect(current_path).to eq vendors_path
 	end
@@ -54,7 +55,7 @@ RSpec.feature "Creating a New Vendor" do
 		end
 	end
 
-	scenario "rquires a unique Vendor name" do
+	scenario "requires a unique Vendor name" do
 		fill_in "vendor[name]", with: vendor.name
 		click_button "Add Vendor"
 
@@ -72,7 +73,8 @@ RSpec.feature "Creating a New Vendor" do
 		fill_in "vendor[name]", with: "a" * 3
 		click_button "Add Vendor"
 
-		expect(page).to have_content("1 error prevented this Vendor from being entered")
 		expect(page).to have_content("Name is too short")
 	end
+
+	scenario "Allows to blank email addresses"
 end

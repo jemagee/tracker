@@ -1,6 +1,7 @@
 class VendorsController < ApplicationController
 
 	before_action :get_vendor, only: [:show, :edit, :update, :destroy]
+	before_action :check_email, only: [:update, :create]
 
 	def index
 		@vendors = Vendor.all
@@ -8,12 +9,13 @@ class VendorsController < ApplicationController
 
 	def new
 		@vendor = Vendor.new
+		@vendor.vendor_certifiers.build
 	end
 
 	def create
 		@vendor = Vendor.new(vendor_params)
 		if @vendor.save
-			flash[:success] = "Vendor Successfully Entered"
+			flash[:success] = "Vendor Successfully Entered!"
 			redirect_to vendors_path
 		else
 			flash.now[:danger] = "Vendor Not Added"
@@ -25,11 +27,12 @@ class VendorsController < ApplicationController
 	end
 
 	def edit
+		@vendor.vendor_certifiers.build
 	end
 
 	def update
 		if @vendor.update(vendor_params)
-			flash[:success] = "Vendor Successfully Updated"
+			flash[:success] = "Vendor Successfully Updated!"
 			redirect_to @vendor
 		else
 			flash.now[:danger] = "Vendor Not Updated"
@@ -47,10 +50,16 @@ class VendorsController < ApplicationController
 	private
 
 		def vendor_params
-			params.require(:vendor).permit(:name, :contact, :contact_email)
+			if params["vendor"]["contact_email"].length == 0
+				params["vendor"]["contact_email"] = nil
+			end
+			params.require(:vendor).permit(:name, :contact, :contact_email, vendor_certifiers_attributes: [:vendor_id, :certifier_id, :expires_on])
 		end
 
 		def get_vendor
 			@vendor = Vendor.find(params[:id])
+		end
+
+		def check_email
 		end
 end
