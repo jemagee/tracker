@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
 	$('.date-select').datepicker
-		dateFormat: 'yy-mm-dd'
+		dateFormat: 'mm/dd/yy'
 		

@@ -13,7 +13,7 @@ RSpec.feature "Adding a Certifier to An Exisiting Vendor" do
 	scenario "works properly" do
 
 		select certifier2.organization, from: "vendor[vendor_certifiers_attributes][0][certifier_id]"
-		fill_in "vendor[vendor_certifiers_attributes][0][expires_on]", with: "2020-12-20"
+		fill_in "vendor[vendor_certifiers_attributes][0][expires_on]", with: "5/22/17"
 
 		
 		click_button "Update Vendor"
@@ -21,7 +21,7 @@ RSpec.feature "Adding a Certifier to An Exisiting Vendor" do
 		expect(page).to have_content("Vendor Successfully Updated!")
 		within ("div#certifications") do
 			expect(page).to have_content(certifier2.organization)
-			expect(page).to have_content("12/20/20")
+			expect(page).to have_content("5/22/17")
 			expect(page).to_not have_content(certifier1.organization)
 			expect(page).to have_content(certification.name)
 		end
