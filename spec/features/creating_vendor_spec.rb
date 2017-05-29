@@ -75,6 +75,4 @@ RSpec.feature "Creating a New Vendor" do
 
 		expect(page).to have_content("Name is too short")
 	end
-
-	scenario "Allows to blank email addresses"
 end

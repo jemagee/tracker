@@ -21,11 +21,14 @@
 
 	<%= f.fields_for :vendor_certifiers do |ff| %>
 
-		<%= ff.collection_select(:certifier_id, Certifier.all, :id, :organization, include_blank: "Select Certifier") %>
+		<div class="field">
+			<%= ff.collection_select(:certifier_id, Certifier.all, :id, :organization, include_blank: "Select Certifier") %>
+		</div>
 
-		<%= ff.label :expires_on %>
-		<%= ff.date_field :expires_on %>
-
+		<div class="field"
+			<%= ff.label :expires_on %>
+			<%= ff.text_field :expires_on, class: 'date-select' %>
+		</div>
 	<% end %>
 
 	<%= f.submit "#{action} Vendor", class: "btn btn-primary" %>

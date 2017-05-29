@@ -8,7 +8,7 @@
 	<% @vendor.vendor_certifiers.each do |vendorcert| %>
 		<%= vendorcert.certifier.certification.name %>
 		<%= vendorcert.certifier.organization %>
-		<%= vendorcert.expires_on %>
+		<%= vendorcert.date_display %>
 	<% end %>
 </div>
 
